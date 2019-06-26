@@ -3,6 +3,11 @@ Crosswords in Java with Sockets Communication
 
 This is a sample crosswords communication in Java using Sockets
 
+Branchs
+---
+The masters branch is command line application
+The interface branch contain an implementation with JFrame
+
 Usage
 ---
 
