@@ -26,17 +26,16 @@ public class Client {
     public static void main(String[] args) {
         //System.out.println(args.clone());
         String words = null;
+        String ip=null;
         BufferedReader reader;
 	reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Qual o seu nome jogador? ");
         try {
-            System.out.print("Qual o seu nome jogador? ");
-            try {
-			words = reader.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-            }
-            Socket socket = new Socket("localhost", 5555);
+            words = reader.readLine();	
+            Socket socket;
+            System.out.print("Qual o IP do servidor: ");
+            ip = reader.readLine();
+            socket = new Socket(ip, 5555);
             System.out.println("Servidor conectado");
             System.out.println("Olá, "+words+". Idenficação enviada, aguardando desafio...");
             ObjectOutputStream outpout = new ObjectOutputStream(socket.getOutputStream());
@@ -62,6 +61,7 @@ public class Client {
             socket.close();
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Servidor indisponivel ou inválido!");
         }
         //}else{
         //    System.out.println("Necessário informar o IP do servidor como parametro");
